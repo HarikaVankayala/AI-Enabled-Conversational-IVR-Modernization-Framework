@@ -39,11 +39,11 @@ call_history: list = []
 # -------------------------
 MENU_STRUCTURE = {
     "main": {
-        "prompt": "Welcome to Air India. Press 1 for Booking. Press 2 for Flight Status. Press 9 for Agent.",
+        "prompt": "Welcome to Air India. Press 1 for Booking. Press 2 for Flight Status. Press 3 for Agent.",
         "options": {
             "1": {"action": "goto_menu", "target": "booking", "message": "Going to Booking."},
             "2": {"action": "goto_menu", "target": "flight_status", "message": "Going to Flight Status."},
-            "9": {"action": "transfer_agent", "message": "Transferring to agent."}
+            "3": {"action": "transfer_agent", "message": "Transferring to agent."}
         }
     },
     "booking": {
@@ -473,3 +473,4 @@ if __name__ == "__main__":
     print("  POST /ivr/sim_speech -> {call_id, transcript}")
     print("  POST /ivr/stt_callback -> provider webhook payload (map required)")
     print("  POST /ivr/end     -> {call_id}")
+
