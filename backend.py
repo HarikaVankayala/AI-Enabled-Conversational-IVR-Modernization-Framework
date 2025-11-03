@@ -622,15 +622,5 @@ def end_call(req: EndCallModel):
 def get_history():
     return {"history": call_history, "active_count": len(active_calls)}
 
-# -------------------------
-# Example run/test instructions (prints)
-# -------------------------
-if __name__ == "__main__":
-    print("This module is a FastAPI app. Run with:")
-    print("  uvicorn ivr_conversational:app --reload")
-    print("Endpoints:")
-    print("  POST /ivr/start   -> {caller: '+91...'}")
-    print("  POST /ivr/dtmf    -> {call_id, digit}")
-    print("  POST /ivr/sim_speech -> {call_id, transcript}")
-    print("  POST /ivr/stt_callback -> provider webhook payload (map required)")
-    print("  POST /ivr/end     -> {call_id}")
+
+
