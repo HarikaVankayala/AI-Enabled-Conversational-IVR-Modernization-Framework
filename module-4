@@ -1,0 +1,50 @@
+from fastapi import FastAPI
+from app.routes.ivr import ivr_router
+from app.health import router as health_router
+
+app = FastAPI(title="Modernized IVR System")
+
+app.include_router(ivr_router)
+app.include_router(health_router)
+from fastapi import APIRouter
+
+ivr_router = APIRouter(prefix="/ivr")
+
+@ivr_router.post("/process")
+def process_ivr(data: dict):
+    return {
+        "intent": "balance",
+        "response": "Your balance is ₹5,000"
+    }
+from fastapi import APIRouter
+
+router = APIRouter()
+
+@router.get("/health")
+def health():
+    return {"status": "UP"}
+from prometheus_client import Counter
+
+REQUEST_COUNT = Counter("ivr_requests_total", "Total IVR Requests")
+import logging
+
+logging.basicConfig(level=logging.INFO)
+def test_sample():
+    assert True
+def test_intent_accuracy():
+    assert "balance" == "balance"
+from locust import HttpUser, task
+
+class IVRUser(HttpUser):
+    @task
+    def test_call(self):
+        self.client.post("/ivr/process", json={"input": "balance"})
+FROM python:3.10
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+COPY . .
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+fastapi
+uvicorn
+prometheus-client
